@@ -391,7 +391,7 @@ cat $researchPath/$domain/$foldername/urllist.txt |  sed 's/\http\:\/\///g' |  s
 diresults=$(ls $toolsPath/dirsearch/reports/$nline/ | grep -v old)
 echo "<tr>
  <td><a href='./reports/$nline.html'>$nline</a></td>
- <td>$(wc -l $toolsPath/dirsearch/reports/$nline/$diresults | awk '{print $1}')</td>
+ <td>$(wc -l $toolsPath/dirsearch/reports$nline/$diresults | awk '{print $1}')</td>
  </tr>" >> $researchPath/$domain/$foldername/master_report.html
 done
 echo "</tbody></table>
