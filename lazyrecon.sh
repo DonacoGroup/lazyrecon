@@ -15,6 +15,7 @@ massdnsWordlist=~/security/tools/SecLists/Discovery/DNS/clean-jhaddix-dns.txt
 chromiumPath=/snap/bin/chromium
 toolsPath=~/security/tools
 researchPath=~/security/research
+lazyreconPath=~/security/tools/rp/lazyrecon
 ########################################
 # Happy Hunting
 ########################################
@@ -33,7 +34,7 @@ SECONDS=0
 
 domain=
 subreport=
-usage() { echo -e "Usage: ./lazyrecon.sh -d domain.com [-e] [excluded.domain.com,other.domain.com]\nOptions:\n  -e\t-\tspecify excluded subdomains\n " 1>&2; exit 1; }
+usage() { echo -e "Usage: $lazyreconPath/lazyrecon.sh -d domain.com [-e] [excluded.domain.com,other.domain.com]\nOptions:\n  -e\t-\tspecify excluded subdomains\n " 1>&2; exit 1; }
 
 while getopts ":d:e:r:" o; do
     case "${o}" in
@@ -142,7 +143,7 @@ excludedomains(){
 dirsearcher(){
 
 echo "Starting dirsearch..."
-cat $researchPath/$domain/recon/$foldername/urllist.txt | xargs -P$subdomainThreads -I % sh -c "python3 $toolsPath/dirsearch/dirsearch.py -e php,asp,aspx,jsp,html,zip,jar -w $dirsearchWordlist -t $dirsearchThreads -u % | grep Target && tput sgr0 && ./lazyrecon.sh -r $domain -r $foldername -r %"
+cat $researchPath/$domain/recon/$foldername/urllist.txt | xargs -P$subdomainThreads -I % sh -c "python3 $toolsPath/dirsearch/dirsearch.py -e php,asp,aspx,jsp,html,zip,jar -w $dirsearchWordlist -t $dirsearchThreads -u % | grep Target && tput sgr0 && $lazyreconPath/lazyrecon.sh -r $domain -r $foldername -r %"
 }
 
 aqua(){
