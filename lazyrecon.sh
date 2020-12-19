@@ -14,7 +14,8 @@ dirsearchWordlist=~/security/tools/dirsearch/db/dicc.txt
 massdnsWordlist=~/security/tools/SecLists/Discovery/DNS/clean-jhaddix-dns.txt
 chromiumPath=/snap/bin/chromium
 toolsPath=~/security/tools
-researchPath=~/security/research
+#researchPath=~/security/research
+researchPath=.
 lazyreconPath=~/security/tools/rp/lazyrecon
 ########################################
 # Happy Hunting
