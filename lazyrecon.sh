@@ -445,7 +445,7 @@ ${reset}                                                      "
 cleandirsearch(){
 	cat $researchPath/$domain/$foldername/urllist.txt | sed 's/\http\:\/\///g' |  sed 's/\https\:\/\///g' | sort -u | while read line; do
   [ -d $toolsPath/dirsearch/reports/$line/ ] && ls $toolsPath/dirsearch/reports/$line/ | grep -v old | while read i; do
-  mv $toolsPath/dirsearch/reports/$line/$i $toolsPath/dirsearch/reports/$line/$i.old
+  sudo mv $toolsPath/dirsearch/reports/$line/$i $toolsPath/dirsearch/reports/$line/$i.old
   done
   done
   }
